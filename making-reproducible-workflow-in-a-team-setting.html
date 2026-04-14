@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Making Reproducible Workflow in a Team Setting | LBYOMAT Book</title>
+  <meta name="description" content="An introduction to the LBYOMAT Course Book." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Making Reproducible Workflow in a Team Setting | LBYOMAT Book" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="An introduction to the LBYOMAT Course Book." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Making Reproducible Workflow in a Team Setting | LBYOMAT Book" />
+  
+  <meta name="twitter:description" content="An introduction to the LBYOMAT Course Book." />
+  
+
+<meta name="author" content="Jem Marie M. Nario and …" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="basic-introduction-to-r.html"/>
+<link rel="next" href="naming-variables-in-r.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<h1>LBYOMAT Course Book</h1>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-me"><i class="fa fa-check"></i><b>1.1</b> About Me</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Basic Introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#session-information"><i class="fa fa-check"></i><b>2.1</b> Session Information</a></li>
+<li class="chapter" data-level="2.2" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#preliminaries"><i class="fa fa-check"></i><b>2.2</b> Preliminaries</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#understanding-the-rstudio-screen"><i class="fa fa-check"></i><b>2.2.1</b> Understanding the RStudio Screen</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#packages"><i class="fa fa-check"></i><b>2.3</b> Packages</a></li>
+<li class="chapter" data-level="2.4" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#setting-up-the-working-directory"><i class="fa fa-check"></i><b>2.4</b> Setting up the Working Directory</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#what-is-a-working-directory"><i class="fa fa-check"></i><b>2.4.1</b> What is a Working Directory?</a></li>
+<li class="chapter" data-level="2.4.2" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#required-folder-structure"><i class="fa fa-check"></i><b>2.4.2</b> Required Folder Structure</a></li>
+<li class="chapter" data-level="2.4.3" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#setting-the-working-directory-in-rstudio"><i class="fa fa-check"></i><b>2.4.3</b> Setting the Working Directory in RStudio</a></li>
+<li class="chapter" data-level="2.4.4" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#setting-the-working-directory-using-code"><i class="fa fa-check"></i><b>2.4.4</b> Setting the Working Directory Using Code</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#cleaning-the-environment-do-this-regularly"><i class="fa fa-check"></i><b>2.5</b> Cleaning the Environment (Do This Regularly)</a></li>
+<li class="chapter" data-level="2.6" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#quarto-markdown"><i class="fa fa-check"></i><b>2.6</b> Quarto Markdown</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#installing-quarto-in-r"><i class="fa fa-check"></i><b>2.6.1</b> Installing Quarto in R</a></li>
+<li class="chapter" data-level="2.6.2" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#starting-a-quarto-document"><i class="fa fa-check"></i><b>2.6.2</b> Starting a Quarto Document</a></li>
+<li class="chapter" data-level="2.6.3" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#yaml-header-use"><i class="fa fa-check"></i><b>2.6.3</b> YAML Header Use</a></li>
+<li class="chapter" data-level="2.6.4" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#quarto-key-features"><i class="fa fa-check"></i><b>2.6.4</b> Quarto Key Features</a></li>
+<li class="chapter" data-level="2.6.5" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#quarto-markdown-shortcuts"><i class="fa fa-check"></i><b>2.6.5</b> Quarto Markdown Shortcuts</a></li>
+<li class="chapter" data-level="2.6.6" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#rendering-a-quarto-document"><i class="fa fa-check"></i><b>2.6.6</b> Rendering a Quarto Document</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#working-directories-and-file-management"><i class="fa fa-check"></i><b>2.7</b> Working Directories and File Management</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#file-naming-convention-mandatory"><i class="fa fa-check"></i><b>2.7.1</b> File Naming Convention (Mandatory)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#mini-exercise-first-quarto-render-mandatory-per-individual"><i class="fa fa-check"></i><b>2.8</b> Mini-Exercise: First Quarto Render (Mandatory per Individual)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html"><i class="fa fa-check"></i><b>3</b> Making Reproducible Workflow in a Team Setting</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#r-project"><i class="fa fa-check"></i><b>3.1.1</b> R Project</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#steps"><i class="fa fa-check"></i><b>3.2</b> Steps</a></li>
+<li class="chapter" data-level="3.3" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#rules"><i class="fa fa-check"></i><b>3.3</b> Rules</a></li>
+<li class="chapter" data-level="3.4" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#closing-message"><i class="fa fa-check"></i><b>3.4</b> Closing Message</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html"><i class="fa fa-check"></i><b>4</b> Naming Variables in R</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#what-is-a-variable"><i class="fa fa-check"></i><b>4.1</b> What is a Variable?</a></li>
+<li class="chapter" data-level="4.2" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#variable-naming-rules"><i class="fa fa-check"></i><b>4.2</b> Variable Naming Rules</a></li>
+<li class="chapter" data-level="4.3" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#built-in-constants"><i class="fa fa-check"></i><b>4.3</b> Built-in Constants</a></li>
+<li class="chapter" data-level="4.4" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#built-in-math-functions"><i class="fa fa-check"></i><b>4.4</b> Built-in Math Functions</a></li>
+<li class="chapter" data-level="4.5" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#removing-variables"><i class="fa fa-check"></i><b>4.5</b> Removing Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html"><i class="fa fa-check"></i><b>5</b> Arrays and Vectors in R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#what-is-a-vector"><i class="fa fa-check"></i><b>5.1</b> What is a Vector?</a></li>
+<li class="chapter" data-level="5.2" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#creating-vectors"><i class="fa fa-check"></i><b>5.2</b> Creating Vectors</a></li>
+<li class="chapter" data-level="5.3" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#sequence-operator"><i class="fa fa-check"></i><b>5.3</b> Sequence Operator <code>:</code></a></li>
+<li class="chapter" data-level="5.4" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#the-seq-function"><i class="fa fa-check"></i><b>5.4</b> The <code>seq()</code> Function</a></li>
+<li class="chapter" data-level="5.5" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#indexing-elements"><i class="fa fa-check"></i><b>5.5</b> Indexing Elements</a></li>
+<li class="chapter" data-level="5.6" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#modifying-and-deleting-elements"><i class="fa fa-check"></i><b>5.6</b> Modifying and Deleting Elements</a></li>
+<li class="chapter" data-level="5.7" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#useful-vector-functions"><i class="fa fa-check"></i><b>5.7</b> Useful Vector Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html"><i class="fa fa-check"></i><b>6</b> Array Operations in R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#element-wise-arithmetic"><i class="fa fa-check"></i><b>6.1</b> Element-wise Arithmetic</a></li>
+<li class="chapter" data-level="6.2" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#scalar-operations"><i class="fa fa-check"></i><b>6.2</b> Scalar Operations</a></li>
+<li class="chapter" data-level="6.3" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#vector-recycling"><i class="fa fa-check"></i><b>6.3</b> Vector Recycling</a></li>
+<li class="chapter" data-level="6.4" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#logical-operations-on-vectors"><i class="fa fa-check"></i><b>6.4</b> Logical Operations on Vectors</a></li>
+<li class="chapter" data-level="6.5" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#apply-functions-across-vectors"><i class="fa fa-check"></i><b>6.5</b> Apply Functions Across Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html"><i class="fa fa-check"></i><b>7</b> Matrix Algebra in R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#creating-a-matrix"><i class="fa fa-check"></i><b>7.1</b> Creating a Matrix</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#matrix-dimensions"><i class="fa fa-check"></i><b>7.2</b> Matrix Dimensions</a></li>
+<li class="chapter" data-level="7.3" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#special-matrices"><i class="fa fa-check"></i><b>7.3</b> Special Matrices</a></li>
+<li class="chapter" data-level="7.4" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#indexing-and-slicing"><i class="fa fa-check"></i><b>7.4</b> Indexing and Slicing</a></li>
+<li class="chapter" data-level="7.5" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#matrix-addition-and-subtraction"><i class="fa fa-check"></i><b>7.5</b> Matrix Addition and Subtraction</a></li>
+<li class="chapter" data-level="7.6" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#scalar-multiplication"><i class="fa fa-check"></i><b>7.6</b> Scalar Multiplication</a></li>
+<li class="chapter" data-level="7.7" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#element-wise-multiplication"><i class="fa fa-check"></i><b>7.7</b> Element-wise Multiplication</a></li>
+<li class="chapter" data-level="7.8" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#matrix-multiplication"><i class="fa fa-check"></i><b>7.8</b> Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.9" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#transpose"><i class="fa fa-check"></i><b>7.9</b> Transpose</a></li>
+<li class="chapter" data-level="7.10" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#trace-of-a-matrix"><i class="fa fa-check"></i><b>7.10</b> Trace of a Matrix</a></li>
+<li class="chapter" data-level="7.11" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#determinant"><i class="fa fa-check"></i><b>7.11</b> Determinant</a></li>
+<li class="chapter" data-level="7.12" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#matrix-inverse"><i class="fa fa-check"></i><b>7.12</b> Matrix Inverse</a></li>
+<li class="chapter" data-level="7.13" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#solving-a-system-of-linear-equations"><i class="fa fa-check"></i><b>7.13</b> Solving a System of Linear Equations</a></li>
+<li class="chapter" data-level="7.14" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#eigenvalues-and-eigenvectors"><i class="fa fa-check"></i><b>7.14</b> Eigenvalues and Eigenvectors</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">LBYOMAT Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="making-reproducible-workflow-in-a-team-setting" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Making Reproducible Workflow in a Team Setting<a href="making-reproducible-workflow-in-a-team-setting.html#making-reproducible-workflow-in-a-team-setting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-1" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Introduction<a href="making-reproducible-workflow-in-a-team-setting.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In class, you use RStudio to write code using Quarto documents. To make sure your work is organized, shareable and works on <strong>any computer</strong>, the best option is to use an <strong>R Project</strong> stored in <strong>Google Drive</strong>. You might have different strategies for this but, I want to share my strategy when I work with a team.</p>
+<div id="r-project" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> R Project<a href="making-reproducible-workflow-in-a-team-setting.html#r-project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It keeps all your files (datasets, code, results, and images) in one place. Using Google Drive means your project automatically syncs online, so you can open it wherever you are without having errors or editing things.</p>
+<p>The important step is organizing everything into folders; for example, with your data: there should be different folders for raw data, cleaned data, and outputs and using relative file paths, codes will run no matter who runs it.</p>
+</div>
+</div>
+<div id="steps" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Steps<a href="making-reproducible-workflow-in-a-team-setting.html#steps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>I tried to make this Beginner-friendly as possible.</p>
+</blockquote>
+<div id="step-1-install-google-drive-desktop" class="section level4 hasAnchor" number="3.2.0.1">
+<h4><span class="header-section-number">3.2.0.1</span> Step 1: Install Google Drive Desktop<a href="making-reproducible-workflow-in-a-team-setting.html#step-1-install-google-drive-desktop" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Download Google Drive for Desktop</li>
+<li>Install it and sign in with your DLSU account</li>
+<li>Make sure you can see a Google Drive folder on your computer.
+<ol style="list-style-type: decimal">
+<li>You should see My Drive and maybe even Shared Drives</li>
+</ol></li>
+</ol>
+</div>
+<div id="step-2-create-a-new-r-project-in-google-drive" class="section level4 hasAnchor" number="3.2.0.2">
+<h4><span class="header-section-number">3.2.0.2</span> Step 2: Create a new R Project in Google Drive<a href="making-reproducible-workflow-in-a-team-setting.html#step-2-create-a-new-r-project-in-google-drive" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<blockquote>
+<p>Important: Make sure you have RStudio and R in your own devices.</p>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li>In RStudio, click <strong>File → New Project</strong></li>
+<li>Choose <strong>New Directory</strong></li>
+<li>Choose <strong>New Project</strong></li>
+<li>Name your project (example: <code>ProblemSet1</code>)</li>
+<li>For <strong>Location</strong>, choose a <strong>folder inside Google Drive</strong>
+<ul>
+<li>Example: <code>Google Drive → Shared Drives → Lab Class</code></li>
+</ul></li>
+<li>Click <strong>Create Project</strong></li>
+</ol>
+<p>If you are correct, RStudio will reopen and you will see your project name in the top-right corner beside the R inside a blue cube.</p>
+</div>
+<div id="step-3-create-folders-for-organization" class="section level4 hasAnchor" number="3.2.0.3">
+<h4><span class="header-section-number">3.2.0.3</span> Step 3: Create folders for organization<a href="making-reproducible-workflow-in-a-team-setting.html#step-3-create-folders-for-organization" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In the <strong>Files</strong> panel (beside the <strong>Plots, Packages…</strong>):</p>
+<ol style="list-style-type: decimal">
+<li><p>Click <strong>New Folder</strong> or the icon of a folder with a green <code>+</code> sign.</p></li>
+<li><p>Create these folders <strong>exactly</strong>:</p></li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="making-reproducible-workflow-in-a-team-setting.html#cb17-1" tabindex="-1"></a>data</span>
+<span id="cb17-2"><a href="making-reproducible-workflow-in-a-team-setting.html#cb17-2" tabindex="-1"></a>scripts</span>
+<span id="cb17-3"><a href="making-reproducible-workflow-in-a-team-setting.html#cb17-3" tabindex="-1"></a>output</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Open the <code>data</code> folder and create two more folders inside it:</p>
+<ul>
+<li><p><code>raw</code> for the datasets downloaded from sources</p></li>
+<li><p><code>cleaned</code> for datasets already cleaned using RStudio (renamed columns, filtering, etc.)</p></li>
+</ul>
+<p>Your structure should look like this:</p></li>
+</ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="making-reproducible-workflow-in-a-team-setting.html#cb18-1" tabindex="-1"></a>ProblemSet1<span class="sc">/</span></span>
+<span id="cb18-2"><a href="making-reproducible-workflow-in-a-team-setting.html#cb18-2" tabindex="-1"></a>  <span class="sc">-</span> data<span class="sc">/</span></span>
+<span id="cb18-3"><a href="making-reproducible-workflow-in-a-team-setting.html#cb18-3" tabindex="-1"></a>  <span class="sc">--</span>  raw<span class="sc">/</span></span>
+<span id="cb18-4"><a href="making-reproducible-workflow-in-a-team-setting.html#cb18-4" tabindex="-1"></a>  <span class="sc">--</span>  cleaned<span class="sc">/</span></span>
+<span id="cb18-5"><a href="making-reproducible-workflow-in-a-team-setting.html#cb18-5" tabindex="-1"></a>  <span class="sc">-</span> scripts<span class="sc">/</span></span>
+<span id="cb18-6"><a href="making-reproducible-workflow-in-a-team-setting.html#cb18-6" tabindex="-1"></a>  <span class="sc">-</span> output<span class="sc">/</span></span>
+<span id="cb18-7"><a href="making-reproducible-workflow-in-a-team-setting.html#cb18-7" tabindex="-1"></a>  <span class="sc">-</span> ProblemSet1.Rproj</span></code></pre></div>
+<p>Uses:</p>
+<ul>
+<li><code>data/raw</code> → <strong>NEVER</strong> change these</li>
+<li><code>data/cleaned</code> → processed/cleaned datasets</li>
+<li><code>scripts</code> → R Markdown / Quarto documents (codes)</li>
+<li><code>output</code> → graphs, tables, reports</li>
+</ul>
+</div>
+<div id="step-4-add-your-data" class="section level4 hasAnchor" number="3.2.0.4">
+<h4><span class="header-section-number">3.2.0.4</span> Step 4: Add your data<a href="making-reproducible-workflow-in-a-team-setting.html#step-4-add-your-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Put your original dataset (CSV, Excel, RData) into:
+<ul>
+<li><code>data/raw</code></li>
+</ul></li>
+<li>Remember: Do <strong>not</strong> edit raw data files.</li>
+</ol>
+</div>
+<div id="step-5-create-an-r-markdown-document" class="section level4 hasAnchor" number="3.2.0.5">
+<h4><span class="header-section-number">3.2.0.5</span> Step 5: Create an R Markdown document<a href="making-reproducible-workflow-in-a-team-setting.html#step-5-create-an-r-markdown-document" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>RStudio: <strong>File → New File → R Markdown</strong></li>
+<li>Choose <strong>HTML</strong></li>
+<li>Click <strong>OK</strong></li>
+<li>Save the files as:
+<ul>
+<li><code>cleaning.Rmd</code></li>
+<li><code>descriptives.Rmd</code>, etc.</li>
+</ul></li>
+<li>Make sure you save these <code>.Rmd</code> files in the <code>scripts</code> folder</li>
+<li>In your YAML Header:</li>
+</ol>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="making-reproducible-workflow-in-a-team-setting.html#cb19-1" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb19-2"><a href="making-reproducible-workflow-in-a-team-setting.html#cb19-2" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Problem Set 1 - Cleaning Datasets&quot;</span></span>
+<span id="cb19-3"><a href="making-reproducible-workflow-in-a-team-setting.html#cb19-3" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">&quot;All member names&quot;</span></span>
+<span id="cb19-4"><a href="making-reproducible-workflow-in-a-team-setting.html#cb19-4" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">&quot;`r Sys.Date()`&quot;</span></span>
+<span id="cb19-5"><a href="making-reproducible-workflow-in-a-team-setting.html#cb19-5" tabindex="-1"></a>output<span class="sc">:</span></span>
+<span id="cb19-6"><a href="making-reproducible-workflow-in-a-team-setting.html#cb19-6" tabindex="-1"></a>  html_document<span class="sc">:</span></span>
+<span id="cb19-7"><a href="making-reproducible-workflow-in-a-team-setting.html#cb19-7" tabindex="-1"></a>    toc<span class="sc">:</span> true</span>
+<span id="cb19-8"><a href="making-reproducible-workflow-in-a-team-setting.html#cb19-8" tabindex="-1"></a>    theme<span class="sc">:</span> united</span>
+<span id="cb19-9"><a href="making-reproducible-workflow-in-a-team-setting.html#cb19-9" tabindex="-1"></a>knitr<span class="sc">:</span></span>
+<span id="cb19-10"><a href="making-reproducible-workflow-in-a-team-setting.html#cb19-10" tabindex="-1"></a>  opts_chunk<span class="sc">:</span></span>
+<span id="cb19-11"><a href="making-reproducible-workflow-in-a-team-setting.html#cb19-11" tabindex="-1"></a>    warning<span class="sc">:</span> false</span>
+<span id="cb19-12"><a href="making-reproducible-workflow-in-a-team-setting.html#cb19-12" tabindex="-1"></a>    message<span class="sc">:</span> false</span>
+<span id="cb19-13"><a href="making-reproducible-workflow-in-a-team-setting.html#cb19-13" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
+</div>
+<div id="step-6-set-up-packages-very-important-step" class="section level4 hasAnchor" number="3.2.0.6">
+<h4><span class="header-section-number">3.2.0.6</span> Step 6: Set up packages (VERY IMPORTANT STEP!)<a href="making-reproducible-workflow-in-a-team-setting.html#step-6-set-up-packages-very-important-step" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>At the top of your R Markdown document, after your YAML Header, add this code chunk:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="making-reproducible-workflow-in-a-team-setting.html#cb20-1" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>) <span class="co"># all packages needed</span></span>
+<span id="cb20-2"><a href="making-reproducible-workflow-in-a-team-setting.html#cb20-2" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="making-reproducible-workflow-in-a-team-setting.html#cb20-3" tabindex="-1"></a><span class="cf">for</span> (pkg <span class="cf">in</span> packages) {</span>
+<span id="cb20-4"><a href="making-reproducible-workflow-in-a-team-setting.html#cb20-4" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(pkg, <span class="at">character.only =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb20-5"><a href="making-reproducible-workflow-in-a-team-setting.html#cb20-5" tabindex="-1"></a>    <span class="fu">install.packages</span>(pkg)</span>
+<span id="cb20-6"><a href="making-reproducible-workflow-in-a-team-setting.html#cb20-6" tabindex="-1"></a>  }</span>
+<span id="cb20-7"><a href="making-reproducible-workflow-in-a-team-setting.html#cb20-7" tabindex="-1"></a>  <span class="fu">library</span>(pkg, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-8"><a href="making-reproducible-workflow-in-a-team-setting.html#cb20-8" tabindex="-1"></a>}</span></code></pre></div>
+<p>This is important because if a teammate opens your project on another computer, R will automatically install any missing packages.</p>
+</div>
+<div id="step-7-load-data-using-relative-paths" class="section level4 hasAnchor" number="3.2.0.7">
+<h4><span class="header-section-number">3.2.0.7</span> Step 7: Load data using relative paths<a href="making-reproducible-workflow-in-a-team-setting.html#step-7-load-data-using-relative-paths" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To load data from the <code>data/raw</code> folder:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="making-reproducible-workflow-in-a-team-setting.html#cb21-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/raw/my_data.csv&quot;</span>)</span></code></pre></div>
+<p><strong>Important:</strong></p>
+<ul>
+<li><strong>Never</strong> use paths like <code>C:/Users/...</code></li>
+<li><strong>Check!</strong> Always start paths from the project folder</li>
+</ul>
+<p>This ensures the project will work on any computer.</p>
+</div>
+<div id="step-8-clean-data-and-save-it" class="section level4 hasAnchor" number="3.2.0.8">
+<h4><span class="header-section-number">3.2.0.8</span> Step 8: Clean data and save it<a href="making-reproducible-workflow-in-a-team-setting.html#step-8-clean-data-and-save-it" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>After cleaning your data, save it to the <code>data/cleaned</code> folder:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="making-reproducible-workflow-in-a-team-setting.html#cb22-1" tabindex="-1"></a>clean_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="making-reproducible-workflow-in-a-team-setting.html#cb22-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(column))</span>
+<span id="cb22-3"><a href="making-reproducible-workflow-in-a-team-setting.html#cb22-3" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="making-reproducible-workflow-in-a-team-setting.html#cb22-4" tabindex="-1"></a><span class="fu">write.csv</span>(clean_df, <span class="st">&quot;data/cleaned/clean_df.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+<div id="step-9-run-code" class="section level4 hasAnchor" number="3.2.0.9">
+<h4><span class="header-section-number">3.2.0.9</span> Step 9: Run code<a href="making-reproducible-workflow-in-a-team-setting.html#step-9-run-code" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>Click the green play button on a code chunk to run the code chunk</li>
+<li>Output will appear below the chunk</li>
+</ul>
+<p>If there is an error, the green vertical line at the right side of the chunk will become red. An error message will appear. Read it carefully.</p>
+<ul>
+<li>Issue might be objects not found → Check Environment</li>
+<li>Typos and file names → Check code chunk</li>
+</ul>
+</div>
+<div id="step-10-save-plots-descriptive-statistics-and-regression-results" class="section level4 hasAnchor" number="3.2.0.10">
+<h4><span class="header-section-number">3.2.0.10</span> Step 10: Save Plots, Descriptive Statistics, and Regression Results<a href="making-reproducible-workflow-in-a-team-setting.html#step-10-save-plots-descriptive-statistics-and-regression-results" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="a.-save-plots" class="section level5 hasAnchor" number="3.2.0.10.1">
+<h5><span class="header-section-number">3.2.0.10.1</span> a. Save Plots<a href="making-reproducible-workflow-in-a-team-setting.html#a.-save-plots" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Save plots to the <code>output</code> folder</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="making-reproducible-workflow-in-a-team-setting.html#cb23-1" tabindex="-1"></a><span class="co"># Option 1: using ggplot2</span></span>
+<span id="cb23-2"><a href="making-reproducible-workflow-in-a-team-setting.html#cb23-2" tabindex="-1"></a><span class="fu">ggplot</span>(clean_df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="making-reproducible-workflow-in-a-team-setting.html#cb23-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb23-4"><a href="making-reproducible-workflow-in-a-team-setting.html#cb23-4" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="making-reproducible-workflow-in-a-team-setting.html#cb23-5" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;output/scatterplot.png&quot;</span>)</span>
+<span id="cb23-6"><a href="making-reproducible-workflow-in-a-team-setting.html#cb23-6" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="making-reproducible-workflow-in-a-team-setting.html#cb23-7" tabindex="-1"></a><span class="co"># Option 2: using base R</span></span>
+<span id="cb23-8"><a href="making-reproducible-workflow-in-a-team-setting.html#cb23-8" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;output/scatterplot.png&quot;</span>)   <span class="co"># Open PNG device</span></span>
+<span id="cb23-9"><a href="making-reproducible-workflow-in-a-team-setting.html#cb23-9" tabindex="-1"></a><span class="fu">plot</span>(clean_df<span class="sc">$</span>x, clean_df<span class="sc">$</span>y,</span>
+<span id="cb23-10"><a href="making-reproducible-workflow-in-a-team-setting.html#cb23-10" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Scatter Plot of x vs y&quot;</span>,</span>
+<span id="cb23-11"><a href="making-reproducible-workflow-in-a-team-setting.html#cb23-11" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;X values&quot;</span>,</span>
+<span id="cb23-12"><a href="making-reproducible-workflow-in-a-team-setting.html#cb23-12" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Y values&quot;</span>,</span>
+<span id="cb23-13"><a href="making-reproducible-workflow-in-a-team-setting.html#cb23-13" tabindex="-1"></a>     <span class="at">pch  =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb23-14"><a href="making-reproducible-workflow-in-a-team-setting.html#cb23-14" tabindex="-1"></a><span class="fu">dev.off</span>()  <span class="co"># Close the PNG device</span></span></code></pre></div>
+</div>
+<div id="b.-save-descriptive-statistics" class="section level5 hasAnchor" number="3.2.0.10.2">
+<h5><span class="header-section-number">3.2.0.10.2</span> b. Save Descriptive Statistics<a href="making-reproducible-workflow-in-a-team-setting.html#b.-save-descriptive-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="base-r-summary-table-as-csv" class="section level6 hasAnchor" number="3.2.0.10.2.1">
+<h6><span class="header-section-number">3.2.0.10.2.1</span> - Base R summary table as CSV<a href="making-reproducible-workflow-in-a-team-setting.html#base-r-summary-table-as-csv" class="anchor-section" aria-label="Anchor link to header"></a></h6>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="making-reproducible-workflow-in-a-team-setting.html#cb24-1" tabindex="-1"></a>dsc_stat <span class="ot">&lt;-</span> <span class="fu">summary</span>(clean_df)</span>
+<span id="cb24-2"><a href="making-reproducible-workflow-in-a-team-setting.html#cb24-2" tabindex="-1"></a>sum_df   <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(dsc_stat)</span>
+<span id="cb24-3"><a href="making-reproducible-workflow-in-a-team-setting.html#cb24-3" tabindex="-1"></a><span class="fu">write.csv</span>(sum_df, <span class="st">&quot;output/descriptive_stats_base.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+<div id="using-stargazer-for-a-nice-formatted-table" class="section level6 hasAnchor" number="3.2.0.10.2.2">
+<h6><span class="header-section-number">3.2.0.10.2.2</span> - Using <code>stargazer</code> for a nice formatted table<a href="making-reproducible-workflow-in-a-team-setting.html#using-stargazer-for-a-nice-formatted-table" class="anchor-section" aria-label="Anchor link to header"></a></h6>
+<p>Include <code>stargazer</code> package at the start of the R Markdown document</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="making-reproducible-workflow-in-a-team-setting.html#cb25-1" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
+<span id="cb25-2"><a href="making-reproducible-workflow-in-a-team-setting.html#cb25-2" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="making-reproducible-workflow-in-a-team-setting.html#cb25-3" tabindex="-1"></a><span class="fu">stargazer</span>(clean_df[, <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)],</span>
+<span id="cb25-4"><a href="making-reproducible-workflow-in-a-team-setting.html#cb25-4" tabindex="-1"></a>          <span class="at">type  =</span> <span class="st">&quot;text&quot;</span>,            <span class="co"># &quot;html&quot; also works</span></span>
+<span id="cb25-5"><a href="making-reproducible-workflow-in-a-team-setting.html#cb25-5" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">&quot;Descriptive Statistics&quot;</span>,</span>
+<span id="cb25-6"><a href="making-reproducible-workflow-in-a-team-setting.html#cb25-6" tabindex="-1"></a>          <span class="at">out   =</span> <span class="st">&quot;output/descriptive_stats_stargazer.txt&quot;</span>)</span></code></pre></div>
+<blockquote>
+<p>I like the look of <code>stargazer</code> tables because they are easier to read</p>
+</blockquote>
+</div>
+</div>
+<div id="c.-save-regression-results" class="section level5 hasAnchor" number="3.2.0.10.3">
+<h5><span class="header-section-number">3.2.0.10.3</span> c. Save Regression Results<a href="making-reproducible-workflow-in-a-team-setting.html#c.-save-regression-results" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-1" tabindex="-1"></a><span class="co"># Run a linear regression</span></span>
+<span id="cb26-2"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-2" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> clean_df)</span>
+<span id="cb26-3"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-3" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-4" tabindex="-1"></a><span class="co"># 1) Save coefficients as CSV (Base R)</span></span>
+<span id="cb26-5"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-5" tabindex="-1"></a>coef_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">coef</span>(model))</span>
+<span id="cb26-6"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-6" tabindex="-1"></a><span class="fu">write.csv</span>(coef_df, <span class="st">&quot;output/reg_coef.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb26-7"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-7" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-8" tabindex="-1"></a><span class="co"># 2) Save full regression summary as text (Base R)</span></span>
+<span id="cb26-9"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-9" tabindex="-1"></a><span class="fu">sink</span>(<span class="st">&quot;output/reg_summary.txt&quot;</span>)</span>
+<span id="cb26-10"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-10" tabindex="-1"></a><span class="fu">summary</span>(model)</span>
+<span id="cb26-11"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-11" tabindex="-1"></a><span class="fu">sink</span>()</span>
+<span id="cb26-12"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-12" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-13" tabindex="-1"></a><span class="co"># 3) Save regression table using stargazer</span></span>
+<span id="cb26-14"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-14" tabindex="-1"></a><span class="fu">stargazer</span>(model,</span>
+<span id="cb26-15"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-15" tabindex="-1"></a>          <span class="at">type  =</span> <span class="st">&quot;text&quot;</span>,            <span class="co"># &quot;html&quot; also works</span></span>
+<span id="cb26-16"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-16" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">&quot;Regression Results&quot;</span>,</span>
+<span id="cb26-17"><a href="making-reproducible-workflow-in-a-team-setting.html#cb26-17" tabindex="-1"></a>          <span class="at">out   =</span> <span class="st">&quot;output/reg_star.txt&quot;</span>)</span></code></pre></div>
+<p><strong>Important:</strong></p>
+<ul>
+<li>Always save outputs in <code>output/</code></li>
+<li><code>stargazer</code> tables are optional but they just look really good.</li>
+</ul>
+</div>
+</div>
+<div id="step-11-knit-your-r-markdown-document" class="section level4 hasAnchor" number="3.2.0.11">
+<h4><span class="header-section-number">3.2.0.11</span> Step 11: Knit your R Markdown document<a href="making-reproducible-workflow-in-a-team-setting.html#step-11-knit-your-r-markdown-document" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Click <strong>Knit</strong> at the top</li>
+<li>An HTML file is created</li>
+<li>This can be shared with teammates</li>
+</ol>
+</div>
+<div id="step-12-save-and-close" class="section level4 hasAnchor" number="3.2.0.12">
+<h4><span class="header-section-number">3.2.0.12</span> Step 12: Save and close<a href="making-reproducible-workflow-in-a-team-setting.html#step-12-save-and-close" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Save all files</li>
+<li>Close RStudio</li>
+<li>Google Drive automatically syncs everything</li>
+</ol>
+</div>
+</div>
+<div id="rules" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Rules<a href="making-reproducible-workflow-in-a-team-setting.html#rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Never move the project folder outside Google Drive</li>
+<li>Never rename folders after starting</li>
+<li>Never edit files in <code>data/raw</code></li>
+<li>Always use relative paths</li>
+<li>All code you do go in R Markdown files</li>
+</ul>
+</div>
+<div id="closing-message" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Closing Message<a href="making-reproducible-workflow-in-a-team-setting.html#closing-message" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You do not have to do this, it is just something I want to share regarding how I do my work in a team and hope to share it with you. I think it is useful especially in the future.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basic-introduction-to-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="naming-variables-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["LBYOMAT_Course_Book.pdf", "LBYOMAT_Course_Book.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "depth": 4
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

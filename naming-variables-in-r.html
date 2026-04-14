@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Naming Variables in R | LBYOMAT Book</title>
+  <meta name="description" content="An introduction to the LBYOMAT Course Book." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Naming Variables in R | LBYOMAT Book" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="An introduction to the LBYOMAT Course Book." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Naming Variables in R | LBYOMAT Book" />
+  
+  <meta name="twitter:description" content="An introduction to the LBYOMAT Course Book." />
+  
+
+<meta name="author" content="Jem Marie M. Nario and …" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="making-reproducible-workflow-in-a-team-setting.html"/>
+<link rel="next" href="arrays-and-vectors-in-r.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<h1>LBYOMAT Course Book</h1>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-me"><i class="fa fa-check"></i><b>1.1</b> About Me</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Basic Introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#session-information"><i class="fa fa-check"></i><b>2.1</b> Session Information</a></li>
+<li class="chapter" data-level="2.2" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#preliminaries"><i class="fa fa-check"></i><b>2.2</b> Preliminaries</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#understanding-the-rstudio-screen"><i class="fa fa-check"></i><b>2.2.1</b> Understanding the RStudio Screen</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#packages"><i class="fa fa-check"></i><b>2.3</b> Packages</a></li>
+<li class="chapter" data-level="2.4" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#setting-up-the-working-directory"><i class="fa fa-check"></i><b>2.4</b> Setting up the Working Directory</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#what-is-a-working-directory"><i class="fa fa-check"></i><b>2.4.1</b> What is a Working Directory?</a></li>
+<li class="chapter" data-level="2.4.2" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#required-folder-structure"><i class="fa fa-check"></i><b>2.4.2</b> Required Folder Structure</a></li>
+<li class="chapter" data-level="2.4.3" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#setting-the-working-directory-in-rstudio"><i class="fa fa-check"></i><b>2.4.3</b> Setting the Working Directory in RStudio</a></li>
+<li class="chapter" data-level="2.4.4" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#setting-the-working-directory-using-code"><i class="fa fa-check"></i><b>2.4.4</b> Setting the Working Directory Using Code</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#cleaning-the-environment-do-this-regularly"><i class="fa fa-check"></i><b>2.5</b> Cleaning the Environment (Do This Regularly)</a></li>
+<li class="chapter" data-level="2.6" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#quarto-markdown"><i class="fa fa-check"></i><b>2.6</b> Quarto Markdown</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#installing-quarto-in-r"><i class="fa fa-check"></i><b>2.6.1</b> Installing Quarto in R</a></li>
+<li class="chapter" data-level="2.6.2" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#starting-a-quarto-document"><i class="fa fa-check"></i><b>2.6.2</b> Starting a Quarto Document</a></li>
+<li class="chapter" data-level="2.6.3" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#yaml-header-use"><i class="fa fa-check"></i><b>2.6.3</b> YAML Header Use</a></li>
+<li class="chapter" data-level="2.6.4" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#quarto-key-features"><i class="fa fa-check"></i><b>2.6.4</b> Quarto Key Features</a></li>
+<li class="chapter" data-level="2.6.5" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#quarto-markdown-shortcuts"><i class="fa fa-check"></i><b>2.6.5</b> Quarto Markdown Shortcuts</a></li>
+<li class="chapter" data-level="2.6.6" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#rendering-a-quarto-document"><i class="fa fa-check"></i><b>2.6.6</b> Rendering a Quarto Document</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#working-directories-and-file-management"><i class="fa fa-check"></i><b>2.7</b> Working Directories and File Management</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#file-naming-convention-mandatory"><i class="fa fa-check"></i><b>2.7.1</b> File Naming Convention (Mandatory)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#mini-exercise-first-quarto-render-mandatory-per-individual"><i class="fa fa-check"></i><b>2.8</b> Mini-Exercise: First Quarto Render (Mandatory per Individual)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html"><i class="fa fa-check"></i><b>3</b> Making Reproducible Workflow in a Team Setting</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#r-project"><i class="fa fa-check"></i><b>3.1.1</b> R Project</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#steps"><i class="fa fa-check"></i><b>3.2</b> Steps</a></li>
+<li class="chapter" data-level="3.3" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#rules"><i class="fa fa-check"></i><b>3.3</b> Rules</a></li>
+<li class="chapter" data-level="3.4" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#closing-message"><i class="fa fa-check"></i><b>3.4</b> Closing Message</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html"><i class="fa fa-check"></i><b>4</b> Naming Variables in R</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#what-is-a-variable"><i class="fa fa-check"></i><b>4.1</b> What is a Variable?</a></li>
+<li class="chapter" data-level="4.2" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#variable-naming-rules"><i class="fa fa-check"></i><b>4.2</b> Variable Naming Rules</a></li>
+<li class="chapter" data-level="4.3" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#built-in-constants"><i class="fa fa-check"></i><b>4.3</b> Built-in Constants</a></li>
+<li class="chapter" data-level="4.4" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#built-in-math-functions"><i class="fa fa-check"></i><b>4.4</b> Built-in Math Functions</a></li>
+<li class="chapter" data-level="4.5" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#removing-variables"><i class="fa fa-check"></i><b>4.5</b> Removing Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html"><i class="fa fa-check"></i><b>5</b> Arrays and Vectors in R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#what-is-a-vector"><i class="fa fa-check"></i><b>5.1</b> What is a Vector?</a></li>
+<li class="chapter" data-level="5.2" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#creating-vectors"><i class="fa fa-check"></i><b>5.2</b> Creating Vectors</a></li>
+<li class="chapter" data-level="5.3" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#sequence-operator"><i class="fa fa-check"></i><b>5.3</b> Sequence Operator <code>:</code></a></li>
+<li class="chapter" data-level="5.4" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#the-seq-function"><i class="fa fa-check"></i><b>5.4</b> The <code>seq()</code> Function</a></li>
+<li class="chapter" data-level="5.5" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#indexing-elements"><i class="fa fa-check"></i><b>5.5</b> Indexing Elements</a></li>
+<li class="chapter" data-level="5.6" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#modifying-and-deleting-elements"><i class="fa fa-check"></i><b>5.6</b> Modifying and Deleting Elements</a></li>
+<li class="chapter" data-level="5.7" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#useful-vector-functions"><i class="fa fa-check"></i><b>5.7</b> Useful Vector Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html"><i class="fa fa-check"></i><b>6</b> Array Operations in R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#element-wise-arithmetic"><i class="fa fa-check"></i><b>6.1</b> Element-wise Arithmetic</a></li>
+<li class="chapter" data-level="6.2" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#scalar-operations"><i class="fa fa-check"></i><b>6.2</b> Scalar Operations</a></li>
+<li class="chapter" data-level="6.3" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#vector-recycling"><i class="fa fa-check"></i><b>6.3</b> Vector Recycling</a></li>
+<li class="chapter" data-level="6.4" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#logical-operations-on-vectors"><i class="fa fa-check"></i><b>6.4</b> Logical Operations on Vectors</a></li>
+<li class="chapter" data-level="6.5" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#apply-functions-across-vectors"><i class="fa fa-check"></i><b>6.5</b> Apply Functions Across Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html"><i class="fa fa-check"></i><b>7</b> Matrix Algebra in R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#creating-a-matrix"><i class="fa fa-check"></i><b>7.1</b> Creating a Matrix</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#matrix-dimensions"><i class="fa fa-check"></i><b>7.2</b> Matrix Dimensions</a></li>
+<li class="chapter" data-level="7.3" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#special-matrices"><i class="fa fa-check"></i><b>7.3</b> Special Matrices</a></li>
+<li class="chapter" data-level="7.4" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#indexing-and-slicing"><i class="fa fa-check"></i><b>7.4</b> Indexing and Slicing</a></li>
+<li class="chapter" data-level="7.5" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#matrix-addition-and-subtraction"><i class="fa fa-check"></i><b>7.5</b> Matrix Addition and Subtraction</a></li>
+<li class="chapter" data-level="7.6" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#scalar-multiplication"><i class="fa fa-check"></i><b>7.6</b> Scalar Multiplication</a></li>
+<li class="chapter" data-level="7.7" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#element-wise-multiplication"><i class="fa fa-check"></i><b>7.7</b> Element-wise Multiplication</a></li>
+<li class="chapter" data-level="7.8" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#matrix-multiplication"><i class="fa fa-check"></i><b>7.8</b> Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.9" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#transpose"><i class="fa fa-check"></i><b>7.9</b> Transpose</a></li>
+<li class="chapter" data-level="7.10" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#trace-of-a-matrix"><i class="fa fa-check"></i><b>7.10</b> Trace of a Matrix</a></li>
+<li class="chapter" data-level="7.11" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#determinant"><i class="fa fa-check"></i><b>7.11</b> Determinant</a></li>
+<li class="chapter" data-level="7.12" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#matrix-inverse"><i class="fa fa-check"></i><b>7.12</b> Matrix Inverse</a></li>
+<li class="chapter" data-level="7.13" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#solving-a-system-of-linear-equations"><i class="fa fa-check"></i><b>7.13</b> Solving a System of Linear Equations</a></li>
+<li class="chapter" data-level="7.14" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#eigenvalues-and-eigenvectors"><i class="fa fa-check"></i><b>7.14</b> Eigenvalues and Eigenvectors</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">LBYOMAT Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="naming-variables-in-r" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Naming Variables in R<a href="naming-variables-in-r.html#naming-variables-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="what-is-a-variable" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> What is a Variable?<a href="naming-variables-in-r.html#what-is-a-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A <strong>variable</strong> is a named storage location in memory that holds a value. In R, you assign a value to a variable using the assignment operator <code>&lt;-</code> (or <code>=</code>). Once stored, you can reuse that variable anywhere in your code.</p>
+<p>For example, we can store the value <span class="math inline">\(0.75\pi\)</span> as a variable <code>a</code> and then use it in an expression:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="naming-variables-in-r.html#cb27-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fl">0.75</span> <span class="sc">*</span> pi</span>
+<span id="cb27-2"><a href="naming-variables-in-r.html#cb27-2" tabindex="-1"></a>a</span></code></pre></div>
+<pre><code>## [1] 2.356194</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="naming-variables-in-r.html#cb29-1" tabindex="-1"></a>a<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">10</span> <span class="sc">*</span> <span class="fu">sqrt</span>(a)</span></code></pre></div>
+<pre><code>## [1] 20.90155</code></pre>
+<p>When you type an expression without assigning it to a variable, R simply prints the result to the console. You can also capture that result explicitly:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="naming-variables-in-r.html#cb31-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> a<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">10</span> <span class="sc">*</span> <span class="fu">sqrt</span>(a)</span>
+<span id="cb31-2"><a href="naming-variables-in-r.html#cb31-2" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>## [1] 20.90155</code></pre>
+</div>
+<div id="variable-naming-rules" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Variable Naming Rules<a href="naming-variables-in-r.html#variable-naming-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R has naming conventions you must follow to avoid errors:</p>
+<table>
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Rule</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cannot start with a number</td>
+<td><code>2x</code> is invalid; <code>x2</code> is fine</td>
+</tr>
+<tr class="even">
+<td>Case-sensitive</td>
+<td><code>Price</code> and <code>price</code> are two different variables</td>
+</tr>
+<tr class="odd">
+<td>No spaces allowed</td>
+<td>Use underscores <code>_</code> or camelCase instead</td>
+</tr>
+<tr class="even">
+<td>Avoid reserved words</td>
+<td>Do not use <code>if</code>, <code>for</code>, <code>TRUE</code>, <code>FALSE</code>, <code>NULL</code>, etc.</td>
+</tr>
+<tr class="odd">
+<td>Underscores and dots allowed</td>
+<td><code>my_var</code>, <code>my.var</code> are both valid</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="naming-variables-in-r.html#cb33-1" tabindex="-1"></a><span class="co"># Valid variable names</span></span>
+<span id="cb33-2"><a href="naming-variables-in-r.html#cb33-2" tabindex="-1"></a>price_1   <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb33-3"><a href="naming-variables-in-r.html#cb33-3" tabindex="-1"></a>gdp_2023  <span class="ot">&lt;-</span> <span class="dv">450000</span></span>
+<span id="cb33-4"><a href="naming-variables-in-r.html#cb33-4" tabindex="-1"></a>my.rate   <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb33-5"><a href="naming-variables-in-r.html#cb33-5" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="naming-variables-in-r.html#cb33-6" tabindex="-1"></a><span class="co"># Case sensitivity example</span></span>
+<span id="cb33-7"><a href="naming-variables-in-r.html#cb33-7" tabindex="-1"></a>GDP <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb33-8"><a href="naming-variables-in-r.html#cb33-8" tabindex="-1"></a>gdp <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
+<span id="cb33-9"><a href="naming-variables-in-r.html#cb33-9" tabindex="-1"></a>GDP <span class="sc">==</span> gdp   <span class="co"># FALSE — they are different variables</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="built-in-constants" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Built-in Constants<a href="naming-variables-in-r.html#built-in-constants" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R has several pre-defined constants:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="naming-variables-in-r.html#cb35-1" tabindex="-1"></a>pi       <span class="co"># 3.14159...</span></span></code></pre></div>
+<pre><code>## [1] 3.141593</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="naming-variables-in-r.html#cb37-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="dv">1</span>)   <span class="co"># Euler&#39;s number e ≈ 2.71828</span></span></code></pre></div>
+<pre><code>## [1] 2.718282</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="naming-variables-in-r.html#cb39-1" tabindex="-1"></a><span class="cn">Inf</span>      <span class="co"># Infinity</span></span></code></pre></div>
+<pre><code>## [1] Inf</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="naming-variables-in-r.html#cb41-1" tabindex="-1"></a><span class="cn">NaN</span>      <span class="co"># Not a Number (e.g., 0/0)</span></span></code></pre></div>
+<pre><code>## [1] NaN</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="naming-variables-in-r.html#cb43-1" tabindex="-1"></a><span class="cn">NA</span>       <span class="co"># Missing value</span></span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+</div>
+<div id="built-in-math-functions" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Built-in Math Functions<a href="naming-variables-in-r.html#built-in-math-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R has a rich set of mathematical functions. The function name is followed by the argument(s) in parentheses:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Math Expression</th>
+<th>R Function</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(|x|\)</span></td>
+<td><code>abs(x)</code></td>
+<td><code>abs(-5)</code> → <code>5</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\ln x\)</span></td>
+<td><code>log(x)</code></td>
+<td><code>log(exp(1))</code> → <code>1</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\log_{10} x\)</span></td>
+<td><code>log10(x)</code></td>
+<td><code>log10(100)</code> → <code>2</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(e^x\)</span></td>
+<td><code>exp(x)</code></td>
+<td><code>exp(1)</code> → <code>2.718</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\sqrt{x}\)</span></td>
+<td><code>sqrt(x)</code></td>
+<td><code>sqrt(9)</code> → <code>3</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x^n\)</span></td>
+<td><code>x^n</code></td>
+<td><code>2^3</code> → <code>8</code></td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="naming-variables-in-r.html#cb45-1" tabindex="-1"></a><span class="fu">abs</span>(<span class="sc">-</span><span class="dv">7</span>)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="naming-variables-in-r.html#cb47-1" tabindex="-1"></a><span class="fu">log</span>(<span class="fu">exp</span>(<span class="dv">1</span>))   <span class="co"># Natural log of e = 1</span></span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="naming-variables-in-r.html#cb49-1" tabindex="-1"></a><span class="fu">log10</span>(<span class="dv">1000</span>)   <span class="co"># Log base 10</span></span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="naming-variables-in-r.html#cb51-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 7.389056</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="naming-variables-in-r.html#cb53-1" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">25</span>)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="naming-variables-in-r.html#cb55-1" tabindex="-1"></a><span class="dv">3</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="dv">2</span>)    <span class="co"># Explicit multiplication is always required</span></span></code></pre></div>
+<pre><code>## [1] 22.16717</code></pre>
+</div>
+<div id="removing-variables" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Removing Variables<a href="naming-variables-in-r.html#removing-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Use <code>rm()</code> to remove a variable from your environment:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="naming-variables-in-r.html#cb57-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">42</span></span>
+<span id="cb57-2"><a href="naming-variables-in-r.html#cb57-2" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 42</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="naming-variables-in-r.html#cb59-1" tabindex="-1"></a><span class="fu">rm</span>(x)</span>
+<span id="cb59-2"><a href="naming-variables-in-r.html#cb59-2" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;x&quot;</span>)   <span class="co"># FALSE — x has been removed</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>To remove all variables at once: <code>rm(list = ls())</code></p>
+<hr />
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="making-reproducible-workflow-in-a-team-setting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="arrays-and-vectors-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["LBYOMAT_Course_Book.pdf", "LBYOMAT_Course_Book.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "depth": 4
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

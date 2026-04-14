@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Basic Introduction to R | LBYOMAT Book</title>
+  <meta name="description" content="An introduction to the LBYOMAT Course Book." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Basic Introduction to R | LBYOMAT Book" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="An introduction to the LBYOMAT Course Book." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Basic Introduction to R | LBYOMAT Book" />
+  
+  <meta name="twitter:description" content="An introduction to the LBYOMAT Course Book." />
+  
+
+<meta name="author" content="Jem Marie M. Nario and …" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="making-reproducible-workflow-in-a-team-setting.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<h1>LBYOMAT Course Book</h1>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-me"><i class="fa fa-check"></i><b>1.1</b> About Me</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Basic Introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#session-information"><i class="fa fa-check"></i><b>2.1</b> Session Information</a></li>
+<li class="chapter" data-level="2.2" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#preliminaries"><i class="fa fa-check"></i><b>2.2</b> Preliminaries</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#understanding-the-rstudio-screen"><i class="fa fa-check"></i><b>2.2.1</b> Understanding the RStudio Screen</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#packages"><i class="fa fa-check"></i><b>2.3</b> Packages</a></li>
+<li class="chapter" data-level="2.4" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#setting-up-the-working-directory"><i class="fa fa-check"></i><b>2.4</b> Setting up the Working Directory</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#what-is-a-working-directory"><i class="fa fa-check"></i><b>2.4.1</b> What is a Working Directory?</a></li>
+<li class="chapter" data-level="2.4.2" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#required-folder-structure"><i class="fa fa-check"></i><b>2.4.2</b> Required Folder Structure</a></li>
+<li class="chapter" data-level="2.4.3" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#setting-the-working-directory-in-rstudio"><i class="fa fa-check"></i><b>2.4.3</b> Setting the Working Directory in RStudio</a></li>
+<li class="chapter" data-level="2.4.4" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#setting-the-working-directory-using-code"><i class="fa fa-check"></i><b>2.4.4</b> Setting the Working Directory Using Code</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#cleaning-the-environment-do-this-regularly"><i class="fa fa-check"></i><b>2.5</b> Cleaning the Environment (Do This Regularly)</a></li>
+<li class="chapter" data-level="2.6" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#quarto-markdown"><i class="fa fa-check"></i><b>2.6</b> Quarto Markdown</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#installing-quarto-in-r"><i class="fa fa-check"></i><b>2.6.1</b> Installing Quarto in R</a></li>
+<li class="chapter" data-level="2.6.2" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#starting-a-quarto-document"><i class="fa fa-check"></i><b>2.6.2</b> Starting a Quarto Document</a></li>
+<li class="chapter" data-level="2.6.3" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#yaml-header-use"><i class="fa fa-check"></i><b>2.6.3</b> YAML Header Use</a></li>
+<li class="chapter" data-level="2.6.4" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#quarto-key-features"><i class="fa fa-check"></i><b>2.6.4</b> Quarto Key Features</a></li>
+<li class="chapter" data-level="2.6.5" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#quarto-markdown-shortcuts"><i class="fa fa-check"></i><b>2.6.5</b> Quarto Markdown Shortcuts</a></li>
+<li class="chapter" data-level="2.6.6" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#rendering-a-quarto-document"><i class="fa fa-check"></i><b>2.6.6</b> Rendering a Quarto Document</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#working-directories-and-file-management"><i class="fa fa-check"></i><b>2.7</b> Working Directories and File Management</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#file-naming-convention-mandatory"><i class="fa fa-check"></i><b>2.7.1</b> File Naming Convention (Mandatory)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="basic-introduction-to-r.html"><a href="basic-introduction-to-r.html#mini-exercise-first-quarto-render-mandatory-per-individual"><i class="fa fa-check"></i><b>2.8</b> Mini-Exercise: First Quarto Render (Mandatory per Individual)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html"><i class="fa fa-check"></i><b>3</b> Making Reproducible Workflow in a Team Setting</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#r-project"><i class="fa fa-check"></i><b>3.1.1</b> R Project</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#steps"><i class="fa fa-check"></i><b>3.2</b> Steps</a></li>
+<li class="chapter" data-level="3.3" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#rules"><i class="fa fa-check"></i><b>3.3</b> Rules</a></li>
+<li class="chapter" data-level="3.4" data-path="making-reproducible-workflow-in-a-team-setting.html"><a href="making-reproducible-workflow-in-a-team-setting.html#closing-message"><i class="fa fa-check"></i><b>3.4</b> Closing Message</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html"><i class="fa fa-check"></i><b>4</b> Naming Variables in R</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#what-is-a-variable"><i class="fa fa-check"></i><b>4.1</b> What is a Variable?</a></li>
+<li class="chapter" data-level="4.2" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#variable-naming-rules"><i class="fa fa-check"></i><b>4.2</b> Variable Naming Rules</a></li>
+<li class="chapter" data-level="4.3" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#built-in-constants"><i class="fa fa-check"></i><b>4.3</b> Built-in Constants</a></li>
+<li class="chapter" data-level="4.4" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#built-in-math-functions"><i class="fa fa-check"></i><b>4.4</b> Built-in Math Functions</a></li>
+<li class="chapter" data-level="4.5" data-path="naming-variables-in-r.html"><a href="naming-variables-in-r.html#removing-variables"><i class="fa fa-check"></i><b>4.5</b> Removing Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html"><i class="fa fa-check"></i><b>5</b> Arrays and Vectors in R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#what-is-a-vector"><i class="fa fa-check"></i><b>5.1</b> What is a Vector?</a></li>
+<li class="chapter" data-level="5.2" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#creating-vectors"><i class="fa fa-check"></i><b>5.2</b> Creating Vectors</a></li>
+<li class="chapter" data-level="5.3" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#sequence-operator"><i class="fa fa-check"></i><b>5.3</b> Sequence Operator <code>:</code></a></li>
+<li class="chapter" data-level="5.4" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#the-seq-function"><i class="fa fa-check"></i><b>5.4</b> The <code>seq()</code> Function</a></li>
+<li class="chapter" data-level="5.5" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#indexing-elements"><i class="fa fa-check"></i><b>5.5</b> Indexing Elements</a></li>
+<li class="chapter" data-level="5.6" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#modifying-and-deleting-elements"><i class="fa fa-check"></i><b>5.6</b> Modifying and Deleting Elements</a></li>
+<li class="chapter" data-level="5.7" data-path="arrays-and-vectors-in-r.html"><a href="arrays-and-vectors-in-r.html#useful-vector-functions"><i class="fa fa-check"></i><b>5.7</b> Useful Vector Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html"><i class="fa fa-check"></i><b>6</b> Array Operations in R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#element-wise-arithmetic"><i class="fa fa-check"></i><b>6.1</b> Element-wise Arithmetic</a></li>
+<li class="chapter" data-level="6.2" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#scalar-operations"><i class="fa fa-check"></i><b>6.2</b> Scalar Operations</a></li>
+<li class="chapter" data-level="6.3" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#vector-recycling"><i class="fa fa-check"></i><b>6.3</b> Vector Recycling</a></li>
+<li class="chapter" data-level="6.4" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#logical-operations-on-vectors"><i class="fa fa-check"></i><b>6.4</b> Logical Operations on Vectors</a></li>
+<li class="chapter" data-level="6.5" data-path="array-operations-in-r.html"><a href="array-operations-in-r.html#apply-functions-across-vectors"><i class="fa fa-check"></i><b>6.5</b> Apply Functions Across Vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html"><i class="fa fa-check"></i><b>7</b> Matrix Algebra in R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#creating-a-matrix"><i class="fa fa-check"></i><b>7.1</b> Creating a Matrix</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#matrix-dimensions"><i class="fa fa-check"></i><b>7.2</b> Matrix Dimensions</a></li>
+<li class="chapter" data-level="7.3" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#special-matrices"><i class="fa fa-check"></i><b>7.3</b> Special Matrices</a></li>
+<li class="chapter" data-level="7.4" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#indexing-and-slicing"><i class="fa fa-check"></i><b>7.4</b> Indexing and Slicing</a></li>
+<li class="chapter" data-level="7.5" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#matrix-addition-and-subtraction"><i class="fa fa-check"></i><b>7.5</b> Matrix Addition and Subtraction</a></li>
+<li class="chapter" data-level="7.6" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#scalar-multiplication"><i class="fa fa-check"></i><b>7.6</b> Scalar Multiplication</a></li>
+<li class="chapter" data-level="7.7" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#element-wise-multiplication"><i class="fa fa-check"></i><b>7.7</b> Element-wise Multiplication</a></li>
+<li class="chapter" data-level="7.8" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#matrix-multiplication"><i class="fa fa-check"></i><b>7.8</b> Matrix Multiplication</a></li>
+<li class="chapter" data-level="7.9" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#transpose"><i class="fa fa-check"></i><b>7.9</b> Transpose</a></li>
+<li class="chapter" data-level="7.10" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#trace-of-a-matrix"><i class="fa fa-check"></i><b>7.10</b> Trace of a Matrix</a></li>
+<li class="chapter" data-level="7.11" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#determinant"><i class="fa fa-check"></i><b>7.11</b> Determinant</a></li>
+<li class="chapter" data-level="7.12" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#matrix-inverse"><i class="fa fa-check"></i><b>7.12</b> Matrix Inverse</a></li>
+<li class="chapter" data-level="7.13" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#solving-a-system-of-linear-equations"><i class="fa fa-check"></i><b>7.13</b> Solving a System of Linear Equations</a></li>
+<li class="chapter" data-level="7.14" data-path="matrix-algebra-in-r.html"><a href="matrix-algebra-in-r.html#eigenvalues-and-eigenvectors"><i class="fa fa-check"></i><b>7.14</b> Eigenvalues and Eigenvectors</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">LBYOMAT Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="basic-introduction-to-r" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Basic Introduction to R<a href="basic-introduction-to-r.html#basic-introduction-to-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This portion of the book offers an introduction to the basics of R. R offers a wide variety of functionality. Note that this book only offers basic Econometric analysis. It will be useful to have some basic familiarity with R and its syntax but this is not strictly necessary.</p>
+<p>Each chapter includes both R code and results to make it easier for students to follow along, even without detailed knowledge of R.</p>
+<div id="session-information" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Session Information<a href="basic-introduction-to-r.html#session-information" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This version of the book was built using R version 4.4.2. See below for the session information:</p>
+<pre><code>## R version 4.5.2 (2025-10-31 ucrt)
+## Platform: x86_64-w64-mingw32/x64
+## Running under: Windows 11 x64 (build 26200)
+## 
+## Matrix products: default
+##   LAPACK version 3.12.1
+## 
+## locale:
+## [1] LC_COLLATE=English_Netherlands.utf8  LC_CTYPE=English_Netherlands.utf8   
+## [3] LC_MONETARY=English_Netherlands.utf8 LC_NUMERIC=C                        
+## [5] LC_TIME=English_Netherlands.utf8    
+## 
+## time zone: Asia/Manila
+## tzcode source: internal
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## loaded via a namespace (and not attached):
+##  [1] digest_0.6.39     R6_2.6.1          bookdown_0.46     fastmap_1.2.0     xfun_0.55         cachem_1.1.0     
+##  [7] knitr_1.51        htmltools_0.5.9   rmarkdown_2.30    lifecycle_1.0.5   cli_3.6.5         sass_0.4.10      
+## [13] jquerylib_0.1.4   compiler_4.5.2    rstudioapi_0.17.1 tools_4.5.2       evaluate_1.0.5    bslib_0.9.0      
+## [19] yaml_2.3.12       otel_0.2.0        jsonlite_2.0.0    rlang_1.2.0</code></pre>
+</div>
+<div id="preliminaries" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Preliminaries<a href="basic-introduction-to-r.html#preliminaries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The first step is to gain access to R, which is free and available on the R website: <a href="http://cran.r-project.org/" class="uri">http://cran.r-project.org/</a>. Simply go to the R website, select the appropriate location and operating system, and follow the instructions to download the base distribution of R. <a href="https://posit.co/">RStudio</a> offers a user friendly environment to run R and is recommended.</p>
+<p><img src="images/screen.jpg" /></p>
+<p>Once R is opened, we can begin to run commands. R commands can be run directly from the console, from the R script editor or from a text editor separate from R.</p>
+<div id="understanding-the-rstudio-screen" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Understanding the RStudio Screen<a href="basic-introduction-to-r.html#understanding-the-rstudio-screen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>Console (Bottom Left)</p>
+<ul>
+<li><p>This is where you see the output from your code</p></li>
+<li><p>Error messages</p></li>
+<li><p>Warnings</p></li>
+<li><p>You can type R commands directly in the console after the <code>&gt;</code> and press <strong>Enter</strong> to run them.</p>
+<blockquote>
+<p>Try it!</p>
+<p>Type 3*9</p>
+</blockquote>
+<p>Use the console for:</p></li>
+<li><p>Quick calculations</p></li>
+<li><p>Testing commands</p></li>
+<li><p>Seeing results</p>
+<blockquote>
+<p><strong>Important! Anything types only in the console is not saved.</strong></p>
+</blockquote></li>
+</ul></li>
+<li><p>Script/Editor Area (Top Left)</p>
+<p>The Script area is where you write and save your code or Quarto documents.</p>
+<p>This is where R scripts and qmd files are written.</p>
+<ul>
+<li><p>Code here is saved, reproducible, and reusable.</p></li>
+<li><p>To run code from the script:</p>
+<ul>
+<li><p>Select a line and press Ctrl+Enter (Windows) or Cmd+Enter (Mac) or just place the cursor beside the line to run it.</p></li>
+<li><p>Run a whole chunk in Quarto</p></li>
+</ul>
+<blockquote>
+<p><strong>Rule: Always write code in the script/editor, not in the console.</strong></p>
+</blockquote></li>
+</ul></li>
+<li><p>Environment (Top Right)</p>
+<ul>
+<li><p>The Environment shows all objects currently in memory such as data frames, variables, functions, models.</p>
+<blockquote>
+<p>Try this: type <code>jmn&lt;-1101</code> in the console. After running this, <code>jmn</code> will appear in the Environment.</p>
+<p>If something does NOT appear, it does not exist in your session.</p>
+</blockquote></li>
+</ul></li>
+<li><p>Files, Plots, Packages, Help, Viewer (Bottom Right)</p>
+<p>This panel has multiple tabs:</p>
+<ul>
+<li><p>Files</p>
+<ul>
+<li><p>Shows files in your working directory. Your working directory can be seen just below the Console, the one after <code>~</code></p></li>
+<li><p>Use this to navigate project files</p></li>
+</ul></li>
+<li><p>Plots</p>
+<ul>
+<li>Displays graphs created by code</li>
+</ul></li>
+<li><p>Packages</p>
+<ul>
+<li><p>Shows list of installed packages.</p></li>
+<li><p>Checkboxes allow loading/unloading packages but you still need to add in the code <code>library()</code> in scripts for reproducibility.</p></li>
+</ul></li>
+<li><p>Help</p>
+<ul>
+<li>Displays help pages</li>
+</ul></li>
+<li><p>Viewer</p>
+<ul>
+<li><p>Shows rendered HTML outputs</p></li>
+<li><p>Used when previewing Quarto documents</p></li>
+</ul></li>
+</ul></li>
+</ol>
+<p>R offers detailed help files for each function. To access help, run:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="basic-introduction-to-r.html#cb2-1" tabindex="-1"></a>?sum</span></code></pre></div>
+<p>All lines proceeded by a # are comments and will not run*. For example:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="basic-introduction-to-r.html#cb3-1" tabindex="-1"></a><span class="co"># This is a comment. R will not recognize this as a command.</span></span></code></pre></div>
+</div>
+</div>
+<div id="packages" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Packages<a href="basic-introduction-to-r.html#packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Each package of interest must be installed and loaded before it can be used. The packages will not be immediately available when R is opened. A package only has to be installed once on a computer, but the package will have to be loaded every time R is restarted.</p>
+<p>We can install a package individually as we need them. For example, to install <strong>tidyverse</strong> and <strong>psych</strong>, we would do:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="basic-introduction-to-r.html#cb4-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)  <span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span></code></pre></div>
+<p>In the tidyverse package, the <strong>ggplot2</strong> is usually included; if you do not see the package in the Packages list at the lower right, you can do this:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="basic-introduction-to-r.html#cb5-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span>(<span class="st">&quot;ggplot2&quot;</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>()[,<span class="st">&quot;Package&quot;</span>]))</span>
+<span id="cb5-2"><a href="basic-introduction-to-r.html#cb5-2" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
+<p>Now that we have our packages successfully installed, we can go ahead and load them into R. Here we will load the tidyverse package as an example. We can use of all the functions available in that package once it is loaded into R. We load packages by using a <code>library()</code> function. The input is the name of the package, not in quotes.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="basic-introduction-to-r.html#cb6-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>We can look up all of the functions within a package by using a <code>help()</code> function. For example, let’s look at the functions available in the <strong>tidyverse</strong> package.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="basic-introduction-to-r.html#cb7-1" tabindex="-1"></a><span class="fu">help</span>(<span class="at">package =</span> tidyverse)</span></code></pre></div>
+<p>Note that the package argument is necessary to look up all of the functions. We can also detach a package if we no longer want it loaded. This is sometimes useful if two packages do not play well together. Here we will use a <code>detach()</code> function.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="basic-introduction-to-r.html#cb8-1" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span></code></pre></div>
+<p>For simplicity, we will assume that the reader has restarted R at the beginning of each tutorial.</p>
+</div>
+<div id="setting-up-the-working-directory" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Setting up the Working Directory<a href="basic-introduction-to-r.html#setting-up-the-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>MOST IMPORTANT!</p>
+</blockquote>
+<p>If your working directory is incorrect, R will not find your files and your code will fail even if it is correct.</p>
+<div id="what-is-a-working-directory" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> What is a Working Directory?<a href="basic-introduction-to-r.html#what-is-a-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The working directory is the folder where R looks for data files, saves outputs, where .qmd files should be placed.</p>
+<p>You will only use <strong>one main local folder</strong> as your working directory (technically two: one in your laptop, one in your university account computer)</p>
+</div>
+<div id="required-folder-structure" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Required Folder Structure<a href="basic-introduction-to-r.html#required-folder-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Create a folder: <code>DLSU_COURSE_SECTION</code></p>
+<p>This folder is your local working directory.</p>
+<ul>
+<li><p>On university computers: create this folder inside your university account storage.</p></li>
+<li><p>On your personal computer: create this folder anywhere convenient for you.</p></li>
+</ul>
+<p>All qmd files must be placed inside this folder!</p>
+</div>
+<div id="setting-the-working-directory-in-rstudio" class="section level3 hasAnchor" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> Setting the Working Directory in RStudio<a href="basic-introduction-to-r.html#setting-the-working-directory-in-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This method works on both Windows and Mac and avoids typing errors.</p>
+<ol style="list-style-type: decimal">
+<li>Open RStudio</li>
+<li>Go to <strong>Session&gt;Set Working Directory&gt;Choose Working Directory</strong></li>
+<li>Select the folder <code>DLSU_COURSE_Section</code></li>
+<li>Click Open</li>
+</ol>
+<p>Once set, R will treat this folder as the default location for all files; meaning, all files in the course should be placed in this folder. Download files then place in this folder.</p>
+</div>
+<div id="setting-the-working-directory-using-code" class="section level3 hasAnchor" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> Setting the Working Directory Using Code<a href="basic-introduction-to-r.html#setting-the-working-directory-using-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is a hassle as you will manually code working directory using <code>setwd()</code></p>
+<p>Windows:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="basic-introduction-to-r.html#cb9-1" tabindex="-1"></a><span class="co"># Use double backslashes \\ or forward slashes /</span></span>
+<span id="cb9-2"><a href="basic-introduction-to-r.html#cb9-2" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">YourUsername</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">DLSU_COURSE_Section&quot;</span>)</span>
+<span id="cb9-3"><a href="basic-introduction-to-r.html#cb9-3" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/Users/YourUsername/Documents/DLSU_COURSE_Section&quot;</span>)</span></code></pre></div>
+<p>Mac:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="basic-introduction-to-r.html#cb10-1" tabindex="-1"></a><span class="co"># Use forward slashes /</span></span>
+<span id="cb10-2"><a href="basic-introduction-to-r.html#cb10-2" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/Users/YourUsername/Documents/DLSU_LBOMETR_Section&quot;</span>)</span></code></pre></div>
+<blockquote>
+<p>How to get the path? I forgot! Just kidding. I just right-click on the file and copy as path name. I am not sure how it is with Mac, I think same, right click but press option so the path name will show up.</p>
+</blockquote>
+<p>To confirm your working directory:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="basic-introduction-to-r.html#cb11-1" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<p>If the printed path is NOT <code>DLSU_COURSE_Section</code>, fix it.</p>
+</div>
+</div>
+<div id="cleaning-the-environment-do-this-regularly" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Cleaning the Environment (Do This Regularly)<a href="basic-introduction-to-r.html#cleaning-the-environment-do-this-regularly" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You should clean your environment at the start of a new lecture, when switching datasets, or when something behaves unexpectedly.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="basic-introduction-to-r.html#cb12-1" tabindex="-1"></a><span class="co"># Remove all objects from the environment</span></span>
+<span id="cb12-2"><a href="basic-introduction-to-r.html#cb12-2" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb12-3"><a href="basic-introduction-to-r.html#cb12-3" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="basic-introduction-to-r.html#cb12-4" tabindex="-1"></a><span class="co"># Free up memory (makes processor faster)</span></span>
+<span id="cb12-5"><a href="basic-introduction-to-r.html#cb12-5" tabindex="-1"></a><span class="fu">gc</span>()</span></code></pre></div>
+<p>The Environment panel should be empty. You are always starting with a clean session.</p>
+</div>
+<div id="quarto-markdown" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Quarto Markdown<a href="basic-introduction-to-r.html#quarto-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this course, Quarto Markdown (.qmd files). Quarto Markdown is a tool for creating documents, reports and presentations using Markdown and executable code.</p>
+<div id="installing-quarto-in-r" class="section level3 hasAnchor" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> Installing Quarto in R<a href="basic-introduction-to-r.html#installing-quarto-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Before starting, install the <code>quarto</code> R package if not already installed:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basic-introduction-to-r.html#cb13-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;quarto&quot;</span>)</span></code></pre></div>
+</div>
+<div id="starting-a-quarto-document" class="section level3 hasAnchor" number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> Starting a Quarto Document<a href="basic-introduction-to-r.html#starting-a-quarto-document" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To begin creating a Quarto document, follow these steps:</p>
+<ol style="list-style-type: decimal">
+<li><p>Open RStudio.</p></li>
+<li><p>Go to <strong>File &gt; New File &gt; Quarto Document.</strong></p></li>
+<li><p>Choose the document type (e.g., HTML, PDF, Word, etc.) and specify whether the document will include code. For ease, we will use the html document type. Use the <strong>visual editor</strong> for ease of editing.</p></li>
+</ol>
+</div>
+<div id="yaml-header-use" class="section level3 hasAnchor" number="2.6.3">
+<h3><span class="header-section-number">2.6.3</span> YAML Header Use<a href="basic-introduction-to-r.html#yaml-header-use" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here is the YAML header for all quarto documents that you will submit along with line-by-line explanations.</p>
+<blockquote>
+<hr />
+<p>title: “TITLE of the FILE”</p>
+</blockquote>
+<p>This contains the title of the document. It appears at the top and in the browser tab.</p>
+<blockquote>
+<p>author: “put your name here”</p>
+</blockquote>
+<p>Replace with your name. Identifies the document author.</p>
+<blockquote>
+<p>date: today</p>
+</blockquote>
+<p>Automatically inserts the current date.</p>
+<blockquote>
+<p>format:</p>
+<p>[2 spaces] html:</p>
+<p>[4 spaces] toc: true</p>
+<p>[4 spaces] theme: united</p>
+<p>[4 spaces] embed-resources: true</p>
+</blockquote>
+<p>Format specifies the output type (html in this case), adds a table of contents, sets a bootstrap html theme (you can use other themes but this is preferred), embeds all resources in the html file.</p>
+<blockquote>
+<p>knitr:</p>
+<p>[2 spaces] opts_chunk:</p>
+<p>[4 spaces] warning: false</p>
+<p>[4 spaces] message: false</p>
+</blockquote>
+<p>Controls code chunk behavior, meaning, it hides warnings and hides messages when rendering.</p>
+<blockquote>
+<p>editor: visual</p>
+</blockquote>
+<p>Uses the visual editor in Rstudio for the output</p>
+<p>3 dashes marks the end of the YAML header.</p>
+<p>As a whole, the YAML header looks like this:</p>
+<p><img src="screen.jpg" /></p>
+</div>
+<div id="quarto-key-features" class="section level3 hasAnchor" number="2.6.4">
+<h3><span class="header-section-number">2.6.4</span> Quarto Key Features<a href="basic-introduction-to-r.html#quarto-key-features" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Code Chunks</strong></p>
+<p>Code chunks allow you to include and run code inside your document. To make code chunks, long way (there is shortcut later). Type ```{r} then press Enter. If you want to run the specific code chunk, you can also press the green play button at the right side of the chunk. If you want to run previous code chunks, press the button that has an arrow down with a green line below, just beside the green play button.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="basic-introduction-to-r.html#cb14-1" tabindex="-1"></a>jem<span class="ot">&lt;-</span><span class="dv">15</span><span class="sc">+</span><span class="dv">50</span><span class="sc">+</span><span class="dv">143</span></span></code></pre></div>
+<p><strong>Inline Code</strong></p>
+<p>Embed R code in text using backticks and <code>r</code> .</p>
+<blockquote>
+<p>Try typing this:</p>
+<p>The total number of pairs is “r 15+12”. Replace the quotation marks with backticks. When you render the file, what should come out beside is would be the number 27.</p>
+</blockquote>
+</div>
+<div id="quarto-markdown-shortcuts" class="section level3 hasAnchor" number="2.6.5">
+<h3><span class="header-section-number">2.6.5</span> Quarto Markdown Shortcuts<a href="basic-introduction-to-r.html#quarto-markdown-shortcuts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table style="width:99%;">
+<colgroup>
+<col width="20%" />
+<col width="39%" />
+<col width="39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Action</th>
+<th>Windows Shortcut</th>
+<th>Mac Shortcut</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Insert a new code chunk</td>
+<td>Ctrl+Alt+I</td>
+<td>Cmd+Option+I</td>
+</tr>
+<tr class="even">
+<td>Run current code chunk</td>
+<td>Ctrl+Shift+Enter</td>
+<td>Cmd+Shift+Enter</td>
+</tr>
+<tr class="odd">
+<td>Run all code chunks</td>
+<td>Ctrl+Alt+R</td>
+<td>Cmd+Option+R</td>
+</tr>
+<tr class="even">
+<td>Run current line/selection</td>
+<td>Ctrl+Enter</td>
+<td>Cmd+Enter</td>
+</tr>
+<tr class="odd">
+<td>Knit/Render document</td>
+<td>Ctrl+Shift+K</td>
+<td>Cmd+Shift+K</td>
+</tr>
+<tr class="even">
+<td>Comment/uncomment lines</td>
+<td>Ctrl+Shift+C</td>
+<td>Cmd+Shift+C</td>
+</tr>
+<tr class="odd">
+<td>Insert pipe (%&gt;%)</td>
+<td>Ctrl+Shift+M</td>
+<td>Cmd+Shift+M</td>
+</tr>
+<tr class="even">
+<td>Headings</td>
+<td><p>/Number of Heading (if in Visual mode)</p>
+<p>Prefix line with #, ##, etc. manually (in Source mode)</p></td>
+<td><p>/Number of Heading (if in Visual mode)</p>
+<p>Prefix line with #, ##, etc. manually (in Source mode)</p></td>
+</tr>
+<tr class="odd">
+<td>Bold</td>
+<td>Ctrl+B</td>
+<td>Cmd+B</td>
+</tr>
+<tr class="even">
+<td>Italic</td>
+<td>Ctrl+I</td>
+<td>Cmd+I</td>
+</tr>
+<tr class="odd">
+<td>Inline code</td>
+<td>Surround with backticks (’) manually</td>
+<td>Surround with backticks (’) manually</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="rendering-a-quarto-document" class="section level3 hasAnchor" number="2.6.6">
+<h3><span class="header-section-number">2.6.6</span> Rendering a Quarto Document<a href="basic-introduction-to-r.html#rendering-a-quarto-document" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Rendering is the process of turning your .qmd file into an html.</p>
+<p>In this course, you will primarily render to HTML.</p>
+<div id="render-using-rstudio-button-do-this" class="section level4 hasAnchor" number="2.6.6.1">
+<h4><span class="header-section-number">2.6.6.1</span> Render Using RStudio Button (DO THIS)<a href="basic-introduction-to-r.html#render-using-rstudio-button-do-this" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Open your qmd file</li>
+<li>Make sure it is saved in the working directory</li>
+<li>Click Render button at the top of the editor. It looks like a blue arrow with the word <code>Render</code>.</li>
+<li>RStudio will run all code chunks, convert the document to HTML then open the result in the Viewer pane.</li>
+</ol>
+<p>If the render is successful, an html file will appear in your Files tab. You can double-click on the html file in your Files so that it appears in a bigger window which you can use to print as PDF.</p>
+</div>
+</div>
+</div>
+<div id="working-directories-and-file-management" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Working Directories and File Management<a href="basic-introduction-to-r.html#working-directories-and-file-management" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You will always work locally first. Each student must:</p>
+<ul>
+<li><p>Edit .qmd files only inside their local <code>DLSU_COURSE_Section</code> folder.</p></li>
+<li><p>Render HTML files locally to check for errors</p></li>
+<li><p>Never edit files directly inside Google Drive via a browser</p></li>
+</ul>
+<div id="file-naming-convention-mandatory" class="section level3 hasAnchor" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> File Naming Convention (Mandatory)<a href="basic-introduction-to-r.html#file-naming-convention-mandatory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To avoid confusion, all .qmd files must follow this format:</p>
+<p><code>initials_topic.qmd</code></p>
+<p>Example:</p>
+<p><code>jmn_descriptives.qmd</code></p>
+<p><code>jmn_visualization.qmd/</code></p>
+</div>
+</div>
+<div id="mini-exercise-first-quarto-render-mandatory-per-individual" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Mini-Exercise: First Quarto Render (Mandatory per Individual)<a href="basic-introduction-to-r.html#mini-exercise-first-quarto-render-mandatory-per-individual" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This exercise checks that you can write, run, and render a Quarto document correctly.</p>
+<p><strong>Instructions:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Create a new Quarto HTML document in RStudio.</li>
+<li>Keep the YAML header exactly as shown earlier in this chapter.</li>
+<li>In the body of the document, do the following steps:</li>
+</ol>
+<p>a. Add a Section Header</p>
+<p>Below the YAML header, add the following Markdown header:</p>
+<p><code>About Me</code> as Heading 1</p>
+<p>Under this header, write 2-3 sentences introducing yourself (name, program, year, hobbies)</p>
+<p>b. Add Inline Code for your age</p>
+<p>In the same section, add a sentence that includes <strong>inline R code</strong>.</p>
+<p>Sentence: I am “r 2026-type your year of birth” years old.</p>
+<p>Do <strong>NOT</strong> calculate your age manually. The age must be computed by R. The number should appear as plain text in the sentence.</p>
+<p>c. Add a Code Chunk</p>
+<p>Insert a new R code chunk.</p>
+<p>Inside the chunk:</p>
+<ul>
+<li><p>Add a comment saying this is just a test</p></li>
+<li><p>Create an object named after your initials</p></li>
+<li><p>Add the alphabetical positions of your initials</p></li>
+<li><p>Print the result</p></li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="basic-introduction-to-r.html#cb15-1" tabindex="-1"></a><span class="co">#This is just a test</span></span>
+<span id="cb15-2"><a href="basic-introduction-to-r.html#cb15-2" tabindex="-1"></a>jmn<span class="ot">&lt;-</span><span class="dv">10</span><span class="sc">+</span><span class="dv">13</span><span class="sc">+</span><span class="dv">14</span></span>
+<span id="cb15-3"><a href="basic-introduction-to-r.html#cb15-3" tabindex="-1"></a><span class="fu">print</span>(jmn)</span></code></pre></div>
+<pre><code>## [1] 37</code></pre>
+<p>d. Render the document</p>
+<p>This exercise will help you in future lectures!</p>
+<p>e. Create a new Quarto document</p>
+<ul>
+<li><p>Clean the environment and free up the memory.</p></li>
+<li><p>Don’t forget your YAML header before the code chunk including the cleaning and freeing the memory!</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="making-reproducible-workflow-in-a-team-setting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["LBYOMAT_Course_Book.pdf", "LBYOMAT_Course_Book.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "depth": 4
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
